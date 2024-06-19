@@ -21,7 +21,7 @@ export const actions = {
 			httpOnly: true,
 			sameSite: 'strict',
 			secure: !dev,
-			maxAge: 60 * 60 * 24 * 7 // one week
+			maxAge: 60 * 60 // one hour
 		});
         throw redirect(303, "/protected")
 	}
