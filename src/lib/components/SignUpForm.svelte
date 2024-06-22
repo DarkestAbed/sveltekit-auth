@@ -1,22 +1,14 @@
+<!-- src/lib/components/SignUpForm.svelte -->
+
 <script>
 	import Input from '$lib/components/Input.svelte';
 	import Button from '$lib/components/Button.svelte';
 
 	let email = '';
 	let password = '';
-	/**
-	 * @type {string}
-	 */
 	let confirmPassword = '';
-	/**
-	 * @type {string | null}
-	 */
 	let error;
 
-	/**
-	 * @param {string} password
-	 * @param {string} confirmPassword
-	 */
 	function validatePassword(password, confirmPassword) {
 		return confirmPassword !== password 
 	}

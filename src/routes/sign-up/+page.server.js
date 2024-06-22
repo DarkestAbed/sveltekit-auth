@@ -1,5 +1,9 @@
+// src/routes/sign-up/+page.server.js
+
 import { redirect } from '@sveltejs/kit';
-import { createSession } from '../../store/db';
+
+import { createSession } from '../../store/db.js';
+
 import { dev } from '$app/environment';
 
 export const actions = {

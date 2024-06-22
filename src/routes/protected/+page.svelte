@@ -1,3 +1,5 @@
+<!-- src/routes/protected/+page.svelte -->
+
 <script>
     export let data;
 </script>

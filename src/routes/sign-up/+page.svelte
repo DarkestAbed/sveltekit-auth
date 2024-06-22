@@ -1,3 +1,5 @@
+<!-- src/routes/sign-up/+page.svelte -->
+
 <script>
 	import SignUpForm from '$lib/components/SignUpForm.svelte';
 	/**

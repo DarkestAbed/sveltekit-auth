@@ -1,13 +1,14 @@
+<!-- src/routes/+layout.svelte -->
+
 <script>
-	import './styles.css';
-    import Navigation from '$lib/components/Navigation.svelte';
 	import { goto } from '$app/navigation';
+	
+	import Navigation from '$lib/components/Navigation.svelte';
+	
+	import './styles.css';
 
     export let data;
     
-	/**
-	 * @param {{ detail: { signout: any; }; }} event
-	 */
 	async function handleSignOut(event) {
 		const status = event.detail.signout;
         await goto(`/?signout=${status}`);

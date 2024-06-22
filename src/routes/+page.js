@@ -1,6 +1,8 @@
-/** @type {import('./$types').PageLoad} */
+// src/routes/page.js
+
 export const load = async ({ parent }) => {
 	const { user } = await parent();
+	
 	if (user) {
 		console.log("user", user);
 		return {

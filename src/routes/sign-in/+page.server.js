@@ -1,6 +1,34 @@
+// src/routes/sign-in/+page.server.js
+
 import { fail, redirect } from '@sveltejs/kit';
+
+import { supabase } from "$lib/db";
 import { getUserByEmail } from '../../store/db';
+
 import { dev } from '$app/environment';
+
+async function getUsers() {
+	const { data, error } = await supabase
+		.from('Users')
+		.select('id,email,created_at,active')
+		.order('id')
+	;
+
+	if (error) {
+		console.log(error.message)
+		throw new Error(error.message)
+	}
+	
+	return {
+		data,
+	}
+};
+
+export async function load() {
+	return {
+		users: await getUsers()
+	}
+};
 
 export const actions = {
 	default: async ({ request, cookies }) => {
@@ -11,8 +39,10 @@ export const actions = {
 		if (email === '' || password === '') {
 			throw redirect(307, '/');
 		}
+
 		const user = await getUserByEmail(email);
-        if(!user || user.password !== password) {
+        
+		if(!user || user.password !== password) {
             return fail(400, { email, incorrect: true });
         }
  

@@ -1,3 +1,5 @@
+<!-- src/lib/components/Navigation.svelte -->
+
 <script>
 	import { createEventDispatcher } from 'svelte';
 	/**

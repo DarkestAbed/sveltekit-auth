@@ -1,3 +1,5 @@
+// src/store/index.js
+
 import { writable } from 'svelte/store';
 
 export const user = writable([
@@ -9,11 +11,14 @@ export const user = writable([
 ]);
 
 export const create = (/** @type {any} */ newUser) => {
-	const userExist = find({ email: newUser.email})
+	const userExist = find({ email: newUser.email});
+
 	if(userExist) {
 	   return false;
-	}
+	};
+
 	user.update((u) => [...u, newUser]);
+	
 	return newUser;
 };
 
@@ -23,6 +28,7 @@ export const remove = (/** @type {number} */ id) => {
 
 export const find = (/** @type {any} */ obj) => {
 	let existingUser;
+
 	user.subscribe((value) => {
 		if (value) {
 			if (obj.email) {
@@ -32,5 +38,6 @@ export const find = (/** @type {any} */ obj) => {
 			}
 		}
 	});
+
 	return existingUser;
 };

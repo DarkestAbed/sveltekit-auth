@@ -1,3 +1,5 @@
+<!-- src/lib/components/Input.svelte -->
+
 <script>
 	export let value = '';
 	export let id;

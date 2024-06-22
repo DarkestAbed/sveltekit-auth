@@ -1,27 +1,28 @@
+<!-- src/lib/components/ClientCheck.svelte -->
+
 <script>
 	import Input from '$lib/components/Input.svelte';
 	import Button from '$lib/components/Button.svelte';
-	import MessageDisplay from './MessageDisplay.svelte';
 
 	import { enhance } from '$app/forms';
 
-	let form;
-	let data;
+	let sending = false;
 	let name = '';
 	let rut = '';
-	let sending = false;
+
+	console.log("sending:", sending)
 </script>
 
 
 <form
 	use:enhance={() => {
 		sending = true;
+		console.log("sending:", sending)
+
 		return ({ update }) => {
-			update({
-				invalidateAll: false,
-				reset: true,
-			}).finally(() => {
+			update({ reset: true, }).finally(() => {
 				sending = false;
+				console.log("sending:", sending)
 			});
 		};
 	}}
@@ -32,19 +33,8 @@
 	<Button type="submit">Visar cliente</Button>
 </form>
 
-<!-- {#if sending}
-	<p>Enviando...</p> -->
-{#if form}
-	{#if form.missing}
-		<p class="error">Requiero el RUT para poder visar 🙂</p>
-	{/if}
-	{#if form.incorrect}
-		<p class="error">RUT erróneo! 😱</p>
-	{/if}
-	{#if form.success}
-		<p class="success">El visado fue exitoso! 🎉</p>
-		<MessageDisplay {data} />
-	{/if}
+{#if sending}
+	<br/><p>Procesando datos...</p>
 {:else}
-	<p>Vamos a visar clientes ☺️</p>
+	<p></p>
 {/if}

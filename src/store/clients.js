@@ -1,4 +1,4 @@
-// src/stores/checkObject.js
+// src/store/client.js
 
 import { writable } from 'svelte/store';
 

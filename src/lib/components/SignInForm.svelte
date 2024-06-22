@@ -1,3 +1,5 @@
+<!-- src/lib/components/SignInForm.svelte -->
+
 <script>
 	import Input from '$lib/components/Input.svelte';
 	import Button from '$lib/components/Button.svelte';

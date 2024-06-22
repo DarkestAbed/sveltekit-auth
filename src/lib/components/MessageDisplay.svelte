@@ -1,6 +1,5 @@
 <!-- src/lib/components/messageDisplay.svelte -->
 
-
 <script>
     export let data;
 
